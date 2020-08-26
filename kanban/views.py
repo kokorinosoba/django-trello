@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, resolve_url
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, UpdateView, CreateView
+from django.views.generic import DetailView, UpdateView, CreateView, ListView
 from .forms import UserFrom, ListForm
 from .mixins import OnlyYouMixin
 from .models import List
@@ -52,8 +52,18 @@ class ListCreateView(LoginRequiredMixin, CreateView):
     model = List
     template_name = 'kanban/lists/create.html'
     form_class = ListForm
-    success_url = reverse_lazy('kanban:home')
+    success_url = reverse_lazy('kanban:lists_list')
 
     def form_valid(self, form):
-        form.user_instance.user = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class ListListView(LoginRequiredMixin, ListView):
+    model = List
+    template_name = 'kanban/lists/list.html'
+
+
+class ListDetailView(LoginRequiredMixin, DetailView):
+    model = List
+    template_name = 'kanban/lists/detail.html'

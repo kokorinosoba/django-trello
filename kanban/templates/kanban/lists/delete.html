@@ -1,0 +1,12 @@
+{% extends 'kanban/base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>Delete list</h1>
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want delete list "{{ list.title }}" ?</p>
+    <button class="btn btn-danger" type="submit">Delete</button>
+  </form>
+</div>
+{% endblock %}

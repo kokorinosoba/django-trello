@@ -32,12 +32,12 @@
 
     <main>
       <div class="container">
-        <h1 class="display-4">Kanban</h1>
-        <p class="lead">Let's manage your tasks with Kanban</p>
-        <hr class="my-4">
-        <p>This application is made with Django</p>
-        <a href="#" role="button" class="btn btn-primary btn-lg">Sign in</a>
-        <a href="#" role="button" class="btn btn-primary btn-lg">Sign up</a>
+        <h1 class="display-4">Sign up</h1>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">登録</button>
+        </form>
       </div>
     </main>
 

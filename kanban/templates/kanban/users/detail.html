@@ -13,6 +13,10 @@
     <dt class="col-sm-3">メールアドレス</dt>
     <dd class="col-sm-9">{{ user.email }}</dd>
   </dl>
-  <a href="{% url 'kanban:users_update' user.pk %}" class="btn btn-primary" role="button">Change</a>
+  {% if user.pk == request.user.pk %}
+    <a href="{% url 'kanban:users_update' user.pk %}" class="btn btn-primary" role="button">Change</a>
+  {% else %}
+    <a href="#" class="btn btn-secondary disabled" role="button">Change</a>
+  {% endif %}
 </div>
 {% endblock %}

@@ -24,6 +24,9 @@
                 <a href="{% url 'kanban:users_detail' request.user.pk %}" class="nav-link">{{ request.user.username }}</a>
               </li>
               <li class="nav-item">
+                <a href="{% url 'kanban:lists_list' %}" class="nav-link">Lists</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Sign out</a>
               </li>
             {% else %}
